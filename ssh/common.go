@@ -190,6 +190,9 @@ type Config struct {
 	// The allowed MAC algorithms. If unspecified then a sensible default
 	// is used.
 	MACs []string
+
+	// Debug channel; messages that display various progress events occur here
+	DebugEvents chan DebugEvent
 }
 
 // SetDefaults sets sensible values for unset fields in config. This is
@@ -225,6 +228,29 @@ func (c *Config) SetDefaults() {
 	}
 	if c.RekeyThreshold < minRekeyThreshold {
 		c.RekeyThreshold = minRekeyThreshold
+	}
+}
+
+func (c *Config) DebugError(message string, err error) {
+	if c.DebugEvents != nil {
+		c.DebugEvents <- DebugEvent{message, err}
+	}
+}
+
+func (c *Config) Debug(message string) {
+	c.DebugError(message, nil)
+}
+
+type DebugEvent struct {
+	Message string
+	Error error
+}
+
+func (e DebugEvent) String() string {
+	if e.Error == nil {
+		return e.Message
+	} else {
+		return fmt.Sprintf("%s: %v", e.Message, e.Error)
 	}
 }
 

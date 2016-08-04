@@ -7,6 +7,7 @@ package ssh
 import (
 	"errors"
 	"fmt"
+	"encoding/hex"
 	"net"
 	"sync"
 	"time"
@@ -88,20 +89,30 @@ func (c *connection) clientHandshake(dialAddress string, config *ClientConfig) e
 	} else {
 		c.clientVersion = []byte(packageVersion)
 	}
+
+	config.Debug(fmt.Sprintf("clientHandshake client version is %v", string(c.clientVersion)))
+
 	var err error
 	c.serverVersion, err = exchangeVersions(c.sshConn.conn, c.clientVersion)
 	if err != nil {
+		config.DebugError("clientHandshake exchangeVersions failed", err)
 		return err
 	}
+
+	config.Debug(fmt.Sprintf("clientHandshake server version is %v", string(c.serverVersion)))
 
 	c.transport = newClientTransport(
 		newTransport(c.sshConn.conn, config.Rand, true /* is client */),
 		c.clientVersion, c.serverVersion, config, dialAddress, c.sshConn.RemoteAddr())
 	if err := c.transport.requestKeyChange(); err != nil {
+		config.DebugError("clientHandshake requestKeyChange failed", err)
 		return err
 	}
 
+	config.Debug(fmt.Sprintf("clientHandshake transport is %#v", c.transport))
+
 	if packet, err := c.transport.readPacket(); err != nil {
+		config.DebugError("clientHandshake readPacket failed", err)
 		return err
 	} else if packet[0] != msgNewKeys {
 		return unexpectedMessageError(msgNewKeys, packet[0])
@@ -109,6 +120,8 @@ func (c *connection) clientHandshake(dialAddress string, config *ClientConfig) e
 
 	// We just did the key change, so the session ID is established.
 	c.sessionID = c.transport.getSessionID()
+
+	config.Debug(fmt.Sprintf("clientHandshake sessionID is %v", hex.EncodeToString(c.sessionID)))
 
 	return c.clientAuthenticate(config)
 }

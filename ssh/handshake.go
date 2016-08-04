@@ -217,12 +217,16 @@ func (t *handshakeTransport) readOnePacket() ([]byte, error) {
 // close the underlying transport. This function is safe for
 // concurrent use by multiple goroutines.
 func (t *handshakeTransport) sendKexInit() (*kexInitMsg, []byte, error) {
+	t.config.Debug("sendKexInit enter")
+	defer t.config.Debug("sendKexInit exit")
 	t.mu.Lock()
 	defer t.mu.Unlock()
 	return t.sendKexInitLocked()
 }
 
 func (t *handshakeTransport) requestKeyChange() error {
+	t.config.Debug("requestKeyChange enter")
+	defer t.config.Debug("requestKeyChange exit")
 	_, _, err := t.sendKexInit()
 	return err
 }
@@ -235,6 +239,7 @@ func (t *handshakeTransport) sendKexInitLocked() (*kexInitMsg, []byte, error) {
 	// may have already sent a kexInit. In that case, don't send a
 	// second kexInit.
 	if t.sentInitMsg != nil {
+		t.config.Debug("sendKexInitLocked using cached packet")
 		return t.sentInitMsg, t.sentInitPacket, nil
 	}
 	msg := &kexInitMsg{
@@ -262,7 +267,10 @@ func (t *handshakeTransport) sendKexInitLocked() (*kexInitMsg, []byte, error) {
 	packetCopy := make([]byte, len(packet))
 	copy(packetCopy, packet)
 
+	t.config.Debug(fmt.Sprintf("sendKexInitLocked tx packet %v bytes", len(packet)))
+
 	if err := t.conn.writePacket(packetCopy); err != nil {
+		t.config.DebugError("sendKexInitLocked writePacket failed", err)
 		return nil, nil, err
 	}
 
@@ -302,16 +310,20 @@ func (t *handshakeTransport) Close() error {
 
 // enterKeyExchange runs the key exchange.
 func (t *handshakeTransport) enterKeyExchange(otherInitPacket []byte) error {
+	t.config.Debug("enterKeyExchange enter")
+defer t.config.Debug("enterKeyExchange exit")
 	if debugHandshake {
 		log.Printf("%s entered key exchange", t.id())
 	}
 	myInit, myInitPacket, err := t.sendKexInit()
 	if err != nil {
+		t.config.DebugError("enterKeyExchange sendKexInit error", err)
 		return err
 	}
 
 	otherInit := &kexInitMsg{}
 	if err := Unmarshal(otherInitPacket, otherInit); err != nil {
+		t.config.DebugError("enterKeyExchange Unmarshal error", err)
 		return err
 	}
 
@@ -334,6 +346,7 @@ func (t *handshakeTransport) enterKeyExchange(otherInitPacket []byte) error {
 
 	algs, err := findAgreedAlgorithms(clientInit, serverInit)
 	if err != nil {
+		t.config.DebugError("enterKeyExchange findAgreedAlgorithms error", err)
 		return err
 	}
 
@@ -342,6 +355,7 @@ func (t *handshakeTransport) enterKeyExchange(otherInitPacket []byte) error {
 		// other side sent a kex message for the wrong algorithm,
 		// which we have to ignore.
 		if _, err := t.conn.readPacket(); err != nil {
+		t.config.DebugError("enterKeyExchange FirstKexFollows readPacket error", err)
 			return err
 		}
 	}
@@ -354,8 +368,14 @@ func (t *handshakeTransport) enterKeyExchange(otherInitPacket []byte) error {
 	var result *kexResult
 	if len(t.hostKeys) > 0 {
 		result, err = t.server(kex, algs, &magics)
+		if err != nil {
+			t.config.DebugError("enterKeyExchange server kex error", err)
+		}
 	} else {
 		result, err = t.client(kex, algs, &magics)
+		if err != nil {
+			t.config.DebugError("enterKeyExchange client kex error", err)
+		}
 	}
 
 	if err != nil {
@@ -364,11 +384,14 @@ func (t *handshakeTransport) enterKeyExchange(otherInitPacket []byte) error {
 
 	t.conn.prepareKeyChange(algs, result)
 	if err = t.conn.writePacket([]byte{msgNewKeys}); err != nil {
+		t.config.DebugError("enterKeyExchange prepareKeyChange writePacket error", err)
 		return err
 	}
 	if packet, err := t.conn.readPacket(); err != nil {
+		t.config.DebugError("enterKeyExchange prepareKeyChange readPacket error", err)
 		return err
 	} else if packet[0] != msgNewKeys {
+		t.config.Debug("enterKeyExchange prepareKeyChange unexpectedMessageError")
 		return unexpectedMessageError(msgNewKeys, packet[0])
 	}
 	return nil
@@ -387,6 +410,9 @@ func (t *handshakeTransport) server(kex kexAlgorithm, algs *algorithms, magics *
 }
 
 func (t *handshakeTransport) client(kex kexAlgorithm, algs *algorithms, magics *handshakeMagics) (*kexResult, error) {
+	t.config.Debug("handshakeTransport client enter")
+	defer t.config.Debug("handshakeTransport client exit")
+
 	result, err := kex.Client(t.conn, t.config.Rand, magics)
 	if err != nil {
 		return nil, err

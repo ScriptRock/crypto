@@ -15,14 +15,17 @@ import (
 func (c *connection) clientAuthenticate(config *ClientConfig) error {
 	// initiate user auth session
 	if err := c.transport.writePacket(Marshal(&serviceRequestMsg{serviceUserAuth})); err != nil {
+		config.DebugError("clientAuthenticate writePacket serviceRequestMsg failed", err)
 		return err
 	}
 	packet, err := c.transport.readPacket()
 	if err != nil {
+		config.DebugError("clientAuthenticate readPacket serviceRequestMsg failed", err)
 		return err
 	}
 	var serviceAccept serviceAcceptMsg
 	if err := Unmarshal(packet, &serviceAccept); err != nil {
+		config.DebugError("clientAuthenticate unmarshal serviceRequestMsg failed", err)
 		return err
 	}
 
@@ -31,13 +34,18 @@ func (c *connection) clientAuthenticate(config *ClientConfig) error {
 	tried := make(map[string]bool)
 	var lastMethods []string
 	for auth := AuthMethod(new(noneAuth)); auth != nil; {
+		config.Debug(fmt.Sprintf("clientAuthenticate attempting auth %T", auth))
 		ok, methods, err := auth.auth(c.transport.getSessionID(), config.User, c.transport, config.Rand)
 		if err != nil {
+			config.DebugError(fmt.Sprintf("clientAuthenticate auth %T", auth), err)
 			return err
 		}
 		if ok {
 			// success
+			config.Debug(fmt.Sprintf("clientAuthenticate auth %T succeeded", auth))
 			return nil
+		} else {
+			config.Debug(fmt.Sprintf("clientAuthenticate auth %T failed", auth))
 		}
 		tried[auth.method()] = true
 		if methods == nil {
