@@ -20,7 +20,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/ScriptRock/crypto/ssh"
+	"github.com/cloudhousetech/crypto/ssh"
 )
 
 // See the sshd manpage

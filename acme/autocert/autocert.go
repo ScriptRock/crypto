@@ -31,7 +31,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ScriptRock/crypto/acme"
+	"github.com/cloudhousetech/crypto/acme"
 )
 
 // createCertRetryAfter is how much time to wait before removing a failed state

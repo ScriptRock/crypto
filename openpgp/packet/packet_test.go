@@ -8,7 +8,7 @@ import (
 	"bytes"
 	"encoding/hex"
 	"fmt"
-	"github.com/ScriptRock/crypto/openpgp/errors"
+	"github.com/cloudhousetech/crypto/openpgp/errors"
 	"io"
 	"io/ioutil"
 	"testing"

@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/ScriptRock/crypto/md4"
+	"github.com/cloudhousetech/crypto/md4"
 )
 
 func ExampleNew() {

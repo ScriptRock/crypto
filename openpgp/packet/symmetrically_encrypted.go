@@ -8,7 +8,7 @@ import (
 	"crypto/cipher"
 	"crypto/sha1"
 	"crypto/subtle"
-	"github.com/ScriptRock/crypto/openpgp/errors"
+	"github.com/cloudhousetech/crypto/openpgp/errors"
 	"hash"
 	"io"
 	"strconv"

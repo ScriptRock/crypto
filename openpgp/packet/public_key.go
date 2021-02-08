@@ -22,8 +22,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/ScriptRock/crypto/openpgp/elgamal"
-	"github.com/ScriptRock/crypto/openpgp/errors"
+	"github.com/cloudhousetech/crypto/openpgp/elgamal"
+	"github.com/cloudhousetech/crypto/openpgp/errors"
 )
 
 var (

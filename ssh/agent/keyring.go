@@ -13,7 +13,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ScriptRock/crypto/ssh"
+	"github.com/cloudhousetech/crypto/ssh"
 )
 
 type privKey struct {

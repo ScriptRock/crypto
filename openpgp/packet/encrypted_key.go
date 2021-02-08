@@ -11,8 +11,8 @@ import (
 	"math/big"
 	"strconv"
 
-	"github.com/ScriptRock/crypto/openpgp/elgamal"
-	"github.com/ScriptRock/crypto/openpgp/errors"
+	"github.com/cloudhousetech/crypto/openpgp/elgamal"
+	"github.com/cloudhousetech/crypto/openpgp/errors"
 )
 
 const encryptedKeyVersion = 3

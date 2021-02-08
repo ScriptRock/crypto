@@ -16,8 +16,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/ScriptRock/crypto/ssh"
-	"github.com/ScriptRock/crypto/ssh/terminal"
+	"github.com/cloudhousetech/crypto/ssh"
+	"github.com/cloudhousetech/crypto/ssh/terminal"
 )
 
 func ExampleNewServerConn() {

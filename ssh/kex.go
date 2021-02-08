@@ -14,7 +14,7 @@ import (
 	"io"
 	"math/big"
 
-	"github.com/ScriptRock/crypto/curve25519"
+	"github.com/cloudhousetech/crypto/curve25519"
 )
 
 const (

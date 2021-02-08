@@ -9,7 +9,7 @@ import (
 	"io"
 	"io/ioutil"
 
-	"github.com/ScriptRock/crypto/openpgp/errors"
+	"github.com/cloudhousetech/crypto/openpgp/errors"
 )
 
 // OpaquePacket represents an OpenPGP packet as raw, unparsed data. This is

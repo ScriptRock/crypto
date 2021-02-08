@@ -10,7 +10,7 @@ import (
 	"encoding/hex"
 	"testing"
 
-	"github.com/ScriptRock/crypto/curve25519"
+	"github.com/cloudhousetech/crypto/curve25519"
 )
 
 func TestSealOpen(t *testing.T) {

@@ -32,11 +32,11 @@ chunk size.
 
 This package is interoperable with NaCl: https://nacl.cr.yp.to/secretbox.html.
 */
-package secretbox // import "github.com/ScriptRock/crypto/nacl/secretbox"
+package secretbox // import "github.com/cloudhousetech/crypto/nacl/secretbox"
 
 import (
-	"github.com/ScriptRock/crypto/poly1305"
-	"github.com/ScriptRock/crypto/salsa20/salsa"
+	"github.com/cloudhousetech/crypto/poly1305"
+	"github.com/cloudhousetech/crypto/salsa20/salsa"
 )
 
 // Overhead is the number of bytes of overhead when boxing a message.

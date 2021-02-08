@@ -18,8 +18,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/ScriptRock/crypto/ed25519"
-	"github.com/ScriptRock/crypto/ssh/testdata"
+	"github.com/cloudhousetech/crypto/ed25519"
+	"github.com/cloudhousetech/crypto/ssh/testdata"
 )
 
 func rawKey(pub PublicKey) interface{} {

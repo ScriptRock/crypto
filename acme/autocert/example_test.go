@@ -10,7 +10,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/ScriptRock/crypto/acme/autocert"
+	"github.com/cloudhousetech/crypto/acme/autocert"
 )
 
 func ExampleNewListener() {

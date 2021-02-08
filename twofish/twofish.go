@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package twofish implements Bruce Schneier's Twofish encryption algorithm.
-package twofish // import "github.com/ScriptRock/crypto/twofish"
+package twofish // import "github.com/cloudhousetech/crypto/twofish"
 
 // Twofish is defined in https://www.schneier.com/paper-twofish-paper.pdf [TWOFISH]
 

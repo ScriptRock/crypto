@@ -4,7 +4,7 @@
 
 // Package otr implements the Off The Record protocol as specified in
 // http://www.cypherpunks.ca/otr/Protocol-v2-3.1.0.html
-package otr // import "github.com/ScriptRock/crypto/otr"
+package otr // import "github.com/cloudhousetech/crypto/otr"
 
 import (
 	"bytes"

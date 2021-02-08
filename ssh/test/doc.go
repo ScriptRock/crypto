@@ -4,4 +4,4 @@
 
 // Package test contains integration tests for the
 // golang.org/x/crypto/ssh package.
-package test // import "github.com/ScriptRock/crypto/ssh/test"
+package test // import "github.com/cloudhousetech/crypto/ssh/test"

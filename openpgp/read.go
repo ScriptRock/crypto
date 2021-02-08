@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package openpgp implements high level operations on OpenPGP messages.
-package openpgp // import "github.com/ScriptRock/crypto/openpgp"
+package openpgp // import "github.com/cloudhousetech/crypto/openpgp"
 
 import (
 	"crypto"
@@ -12,9 +12,9 @@ import (
 	"io"
 	"strconv"
 
-	"github.com/ScriptRock/crypto/openpgp/armor"
-	"github.com/ScriptRock/crypto/openpgp/errors"
-	"github.com/ScriptRock/crypto/openpgp/packet"
+	"github.com/cloudhousetech/crypto/openpgp/armor"
+	"github.com/cloudhousetech/crypto/openpgp/errors"
+	"github.com/cloudhousetech/crypto/openpgp/packet"
 )
 
 // SignatureType is the armor type for a PGP signature.

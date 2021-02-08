@@ -14,7 +14,7 @@
 // 	        panic(err)
 // 	}
 // 	defer terminal.Restore(0, oldState)
-package terminal // import "github.com/ScriptRock/crypto/ssh/terminal"
+package terminal // import "github.com/cloudhousetech/crypto/ssh/terminal"
 
 import (
 	"golang.org/x/sys/unix"

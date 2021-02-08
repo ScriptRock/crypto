@@ -11,7 +11,7 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/ScriptRock/crypto/cryptobyte/asn1"
+	"github.com/cloudhousetech/crypto/cryptobyte/asn1"
 )
 
 // This file contains ASN.1-related methods for String and Builder.

@@ -7,8 +7,8 @@ package packet
 import (
 	"crypto"
 	"encoding/binary"
-	"github.com/ScriptRock/crypto/openpgp/errors"
-	"github.com/ScriptRock/crypto/openpgp/s2k"
+	"github.com/cloudhousetech/crypto/openpgp/errors"
+	"github.com/cloudhousetech/crypto/openpgp/s2k"
 	"io"
 	"strconv"
 )

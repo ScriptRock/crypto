@@ -8,8 +8,8 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/ScriptRock/crypto/cryptobyte"
-	"github.com/ScriptRock/crypto/cryptobyte/asn1"
+	"github.com/cloudhousetech/crypto/cryptobyte"
+	"github.com/cloudhousetech/crypto/cryptobyte/asn1"
 )
 
 func ExampleString_lengthPrefixed() {

@@ -24,7 +24,7 @@ import (
 	"math/big"
 	"strings"
 
-	"github.com/ScriptRock/crypto/ed25519"
+	"github.com/cloudhousetech/crypto/ed25519"
 )
 
 // These constants represent the algorithm names for key types supported by this

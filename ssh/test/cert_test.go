@@ -11,7 +11,7 @@ import (
 	"crypto/rand"
 	"testing"
 
-	"github.com/ScriptRock/crypto/ssh"
+	"github.com/cloudhousetech/crypto/ssh"
 )
 
 // Test both logging in with a cert, and also that the certificate presented by an OpenSSH host can be validated correctly

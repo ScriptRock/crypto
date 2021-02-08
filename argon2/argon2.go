@@ -40,7 +40,7 @@ import (
 	"encoding/binary"
 	"sync"
 
-	"github.com/ScriptRock/crypto/blake2b"
+	"github.com/cloudhousetech/crypto/blake2b"
 )
 
 // The Argon2 version implemented by this package.

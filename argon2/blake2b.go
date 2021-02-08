@@ -8,7 +8,7 @@ import (
 	"encoding/binary"
 	"hash"
 
-	"github.com/ScriptRock/crypto/blake2b"
+	"github.com/cloudhousetech/crypto/blake2b"
 )
 
 // blake2bHash computes an arbitrary long hash value of in

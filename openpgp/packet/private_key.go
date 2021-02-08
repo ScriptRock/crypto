@@ -18,9 +18,9 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/ScriptRock/crypto/openpgp/elgamal"
-	"github.com/ScriptRock/crypto/openpgp/errors"
-	"github.com/ScriptRock/crypto/openpgp/s2k"
+	"github.com/cloudhousetech/crypto/openpgp/elgamal"
+	"github.com/cloudhousetech/crypto/openpgp/errors"
+	"github.com/cloudhousetech/crypto/openpgp/s2k"
 )
 
 // PrivateKey represents a possibly encrypted private key. See RFC 4880,

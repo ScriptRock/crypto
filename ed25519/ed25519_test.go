@@ -15,7 +15,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/ScriptRock/crypto/ed25519/internal/edwards25519"
+	"github.com/cloudhousetech/crypto/ed25519/internal/edwards25519"
 )
 
 type zeroReader struct{}

@@ -16,7 +16,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ScriptRock/crypto/ssh"
+	"github.com/cloudhousetech/crypto/ssh"
 )
 
 // startOpenSSHAgent executes ssh-agent, and returns an Agent interface to it.

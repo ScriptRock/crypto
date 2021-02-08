@@ -8,7 +8,7 @@ import (
 	"encoding/hex"
 	"fmt"
 
-	"github.com/ScriptRock/crypto/nacl/auth"
+	"github.com/cloudhousetech/crypto/nacl/auth"
 )
 
 func Example() {

@@ -13,7 +13,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/ScriptRock/crypto/ssh"
+	"github.com/cloudhousetech/crypto/ssh"
 )
 
 func TestServer(t *testing.T) {

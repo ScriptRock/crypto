@@ -16,7 +16,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/ScriptRock/crypto/ssh"
+	"github.com/cloudhousetech/crypto/ssh"
 )
 
 func TestRunCommandSuccess(t *testing.T) {

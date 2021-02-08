@@ -21,7 +21,7 @@ import (
 	"io"
 	"strconv"
 
-	"github.com/ScriptRock/crypto/ed25519/internal/edwards25519"
+	"github.com/cloudhousetech/crypto/ed25519/internal/edwards25519"
 )
 
 const (

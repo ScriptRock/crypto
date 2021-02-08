@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package blowfish implements Bruce Schneier's Blowfish encryption algorithm.
-package blowfish // import "github.com/ScriptRock/crypto/blowfish"
+package blowfish // import "github.com/cloudhousetech/crypto/blowfish"
 
 // The code is a port of Bruce Schneier's C implementation.
 // See https://www.schneier.com/blowfish.html.

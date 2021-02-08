@@ -28,7 +28,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ScriptRock/crypto/acme"
+	"github.com/cloudhousetech/crypto/acme"
 )
 
 var discoTmpl = template.Must(template.New("disco").Parse(`{

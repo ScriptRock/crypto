@@ -7,7 +7,7 @@
 //
 // Clearsigned messages are cryptographically signed, but the contents of the
 // message are kept in plaintext so that it can be read without special tools.
-package clearsign // import "github.com/ScriptRock/crypto/openpgp/clearsign"
+package clearsign // import "github.com/cloudhousetech/crypto/openpgp/clearsign"
 
 import (
 	"bufio"
@@ -18,9 +18,9 @@ import (
 	"net/textproto"
 	"strconv"
 
-	"github.com/ScriptRock/crypto/openpgp/armor"
-	"github.com/ScriptRock/crypto/openpgp/errors"
-	"github.com/ScriptRock/crypto/openpgp/packet"
+	"github.com/cloudhousetech/crypto/openpgp/armor"
+	"github.com/cloudhousetech/crypto/openpgp/errors"
+	"github.com/cloudhousetech/crypto/openpgp/packet"
 )
 
 // A Block represents a clearsigned message. A signature on a Block can

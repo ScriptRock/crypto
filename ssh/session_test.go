@@ -16,7 +16,7 @@ import (
 	"net"
 	"testing"
 
-	"github.com/ScriptRock/crypto/ssh/terminal"
+	"github.com/cloudhousetech/crypto/ssh/terminal"
 )
 
 type serverType func(Channel, <-chan *Request, *testing.T)
